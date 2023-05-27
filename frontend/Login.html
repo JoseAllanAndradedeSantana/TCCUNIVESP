@@ -12,25 +12,28 @@
         <div class="container">
             <h2>Login</h2>
             <label>Email:</label>
-            <input type="text" name="email" placeholder="Digite seu email">
+            <input type="text" id="email" name="email" placeholder="Digite seu email">
             <label>Senha:</label>
-            <input type="password" name="password" placeholder="Digite sua senha">
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" >
+            <button onclick="validarUser()">OK</button>
         </div>
     </header>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    axios.get("http://localhost:8181/ubs").then(request => {
-        console.log(request)
-        let ubsList = request.data;
-        let ubss = document.getElementById("ubs");
+    function validarUser(){
+        //dados mockados para teste
+        debugger
+        let user = "allan@allan";
+        let senha = "1234"
+        let senhaDigitada =document.getElementById("password").value;
         
-        ubsList.forEach(ubs => {
-            console.log(ubs)
-            let unidade = document.createElement("li");
-            unidade.innerHTML = ubs.nome.concat(" - ").concat(ubs.cidade).concat(" <br>Vacina disponivel:").concat(ubs.vacina);
-            ubss.appendChild(unidade);       
-        });
-    });
+        if(senha == senhaDigitada ){
+            alert("usuario logado com sucesso")
+        }else{
+            alert("erro")
+        }
+
+    }
 </script>
 </html>

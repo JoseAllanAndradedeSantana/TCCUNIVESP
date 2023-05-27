@@ -7,6 +7,7 @@
     <title>Unidades</title>
 </head>
 <body>
+    <h1>Unidades Basica de Saúde (UBS)</h1>
     <div class="conteiner">
         <ul id="ubs"></ul>
     </div>
@@ -21,7 +22,7 @@
         ubsList.forEach(ubs => {
             console.log(ubs)
             let unidade = document.createElement("li");
-            unidade.innerHTML = ubs.nome.concat(" - ").concat(ubs.cidade).concat(" <br>Vacina disponivel:").concat(ubs.vacina);
+            unidade.innerHTML = ubs.nome.concat(" - ").concat(ubs.cidade).concat(" Vacina disponivel:").concat(ubs.vacina);
             ubss.appendChild(unidade);       
         });
     });
