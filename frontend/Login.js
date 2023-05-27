@@ -1,21 +1,15 @@
 const Sequelize = require("sequelize");
 const connection = require("../database/database");
 
-const Unidade = connection.define('unidade',{
+const Usuario = connection.define('usuario',{
     nome:{
         type:Sequelize.STRING,
         allowNull:false
-    }, cidade:{
-        type: Sequelize.STRING,
-        allowNull:false
-    }, vacina:{
-        type: Sequelize.STRING,
-        allowNull:false
-    },estado:{
+    }, senha:{
         type: Sequelize.STRING,
         allowNull:false
     }
 })
 
-Unidade.sync({force:false});
+Login.sync({force:false});
 module.exports = Classe;
