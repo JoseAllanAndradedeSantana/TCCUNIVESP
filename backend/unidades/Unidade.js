@@ -18,4 +18,4 @@ const Unidade = connection.define('unidade',{
 })
 
 Unidade.sync({force:false});
-module.exports = Classe;
+module.exports = Unidade;

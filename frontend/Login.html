@@ -3,24 +3,55 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Login</title>
+    <title>Pesquisa</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
    
 </head>
 <body>
     <header>
         <div class="container">
-            <h2>Login</h2>
-            <label>Email:</label>
-            <input type="text" id="email" name="email" placeholder="Digite seu email">
-            <label>Senha:</label>
-            <input type="password" id="password" name="password" placeholder="Digite sua senha" >
-            <button onclick="validarUser()">OK</button>
+            <h2>Pesquisa</h2>
+           
+            <label>Pesquisa:</label>
+            <input type="text" id="password" name="password" placeholder="Digite sua Pesquisa" >
+            <button id="ok" >Pesquisar</button>
+        </div>
+        <h1 id="unidadeBasica"></h1>
+        <div class="card-body">
+            <ul id="ubs"></ul>
         </div>
     </header>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    document.getElementById("ok").addEventListener('click', function(){
+        
+        let user = "allan@allan";
+        let senha = "1234"
+        let senhaDigitada =document.getElementById("password").value;
+        
+        if(senha = senhaDigitada ){
+            axios.get(`http://localhost:8181/doenca/${senhaDigitada}`).then(request => {
+        console.log(request)
+        let ubsList = request.data;
+        let ubss = document.getElementById("ubs");
+        let limpar = document.createElement("li");
+        ubss.innerHTML = " "
+        ubsList.forEach(ubs => {
+            console.log(ubs)
+            let h1 = document.getElementById("unidadeBasica")
+            let unidade = document.createElement("li");
+            
+            unidade.innerHTML = ubs.nome.concat(" - ").concat(ubs.sintomas);
+            h1.innerHTML = "Unidades Basica de Saúde (UBS) - Santos"
+            ubss.appendChild(unidade);       
+        });
+    });
+            alert("Pesquisa feita com sucesso")
+        }else{
+            alert("erro")
+        }
+    })
     function validarUser(){
         //dados mockados para teste
         debugger
